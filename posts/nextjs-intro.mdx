@@ -1,0 +1,67 @@
+---
+title: 'Next.js 시작하기'
+date: '2026-01-18'
+description: 'Next.js의 기본 개념과 App Router에 대해 알아봅니다'
+tags: ['Next.js', 'React', 'Web Development']
+---
+
+# Next.js란?
+
+Next.js는 React 기반의 풀스택 웹 프레임워크입니다. Vercel에서 개발하고 유지보수하고 있으며, 서버 사이드 렌더링(SSR)과 정적 사이트 생성(SSG)을 쉽게 구현할 수 있습니다.
+
+## 주요 특징
+
+### 1. App Router
+
+Next.js 13부터 도입된 App Router는 React Server Components를 기반으로 합니다.
+
+```typescript
+// app/page.tsx
+export default function Home() {
+  return <h1>Hello, Next.js!</h1>
+}
+```
+
+### 2. 파일 기반 라우팅
+
+폴더 구조가 곧 URL 구조가 됩니다.
+
+```
+app/
+├── page.tsx          -> /
+├── about/
+│   └── page.tsx      -> /about
+└── blog/
+    └── [slug]/
+        └── page.tsx  -> /blog/:slug
+```
+
+### 3. 서버 컴포넌트
+
+기본적으로 모든 컴포넌트는 서버에서 렌더링됩니다.
+
+```typescript
+// 서버 컴포넌트 (기본)
+async function ServerComponent() {
+  const data = await fetchData()
+  return <div>{data}</div>
+}
+
+// 클라이언트 컴포넌트
+'use client'
+function ClientComponent() {
+  const [state, setState] = useState(0)
+  return <button onClick={() => setState(state + 1)}>{state}</button>
+}
+```
+
+## 왜 Next.js를 사용해야 할까?
+
+1. **성능**: 자동 코드 스플리팅과 최적화
+2. **SEO**: 서버 사이드 렌더링으로 검색 엔진 최적화
+3. **개발자 경험**: 빠른 리프레시, TypeScript 지원
+4. **확장성**: API Routes로 백엔드 기능 구현 가능
+
+## 마치며
+
+Next.js는 현대적인 웹 애플리케이션을 구축하는 데 필요한 모든 기능을 제공합니다. 이 블로그도 Next.js로 만들어졌으니, 직접 경험해보시기 바랍니다!
