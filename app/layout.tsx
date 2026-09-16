@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import SiteChrome from '@/components/SiteChrome'
 
 export const metadata: Metadata = {
   title: '항공권 알리미 | 국내선 취소표 알림',
@@ -13,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body className="min-h-screen flex flex-col"><SiteChrome>{children}</SiteChrome></body>
     </html>
   )
 }
